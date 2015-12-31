@@ -4,7 +4,7 @@
   <title><![CDATA[qiuhm blog]]></title>
   <link href="http://qiuhm.github.io/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2015-12-31T10:51:26+08:00</updated>
+  <updated>2015-12-31T10:56:51+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -23,7 +23,8 @@
 <p><code>#import UIKit.h
 </code>
 ==测试文字==
-<img src="../blogpic/welcome.jpg" alt="welcome" /></p>
+<img src="../blogpic/welcome.jpg" alt="welcome" />
+加点文字，测试部署</p>
 ]]></content>
   </entry>
   
