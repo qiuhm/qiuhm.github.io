@@ -11,6 +11,8 @@ categories:
 ```
 ==测试文字==
 ![welcome](../blogpic/welcome.jpg)
-加点文字，测试部署
+测试部署
+再次测试部署
+once agine
 
 
