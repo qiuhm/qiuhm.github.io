@@ -4,7 +4,7 @@
   <title><![CDATA[qiuhm blog]]></title>
   <link href="http://qiuhm.github.io/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2015-12-31T11:20:20+08:00</updated>
+  <updated>2015-12-31T11:24:32+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -15,18 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[hello world]]></title>
-    <link href="http://qiuhm.github.io/blog/2015/12/30/hello-world/"/>
+    <link href="http://qiuhm.github.io/blog/2015/12/30/%E6%AC%A2%E8%BF%8E%E9%A1%B5/"/>
     <updated>2015-12-30T17:17:36+08:00</updated>
-    <id>http://qiuhm.github.io/blog/2015/12/30/hello-world</id>
-    <content type="html"><![CDATA[<h2>Hello world</h2>
-
-<p><code>#import UIKit.h
-</code>
-==测试文字==
-<img src="../blogpic/welcome.jpg" alt="welcome" />
-测试部署
-再次测试部署
-once agine</p>
+    <id>http://qiuhm.github.io/blog/2015/12/30/欢迎页</id>
+    <content type="html"><![CDATA[<p>这是qiuhm的博客，欢迎大家^_^</p>
 ]]></content>
   </entry>
   
