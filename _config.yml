@@ -94,11 +94,14 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name: qiuhm
-disqus_show_comment_count: true
+# disqus_short_name: qiuhm
+# disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+#weibo_share
+weibo_share: true
