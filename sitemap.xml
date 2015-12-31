@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://qiuhm.github.io/blog/2015/12/31/li-yong-facebook-slash-infergong-ju-sao-miao-ocdai-ma/</loc>
+    <lastmod>2015-12-31T17:52:53+08:00</lastmod>
+  </url>
+  <url>
     <loc>http://qiuhm.github.io/blog/2015/12/31/facebook-slash-inferjing-tai-sao-miao-fen-xi-ocdai-ma/</loc>
     <lastmod>2015-12-31T17:14:41+08:00</lastmod>
   </url>
@@ -16,5 +20,8 @@
   </url>
   <url>
     <loc>http://qiuhm.github.io/about/</loc>
+  </url>
+  <url>
+    <loc>http://qiuhm.github.io/blog/categories/ce-shi-gong-ju/</loc>
   </url>
 </urlset>
