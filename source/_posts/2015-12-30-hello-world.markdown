@@ -10,6 +10,6 @@ categories:
 ```#import UIKit.h
 ```
 ==测试文字==
-![../blogpic/welcom.jpg](welcome)
+![welcome](../blogpic/welcome.jpg)
 
 
