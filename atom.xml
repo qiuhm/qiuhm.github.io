@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[qiuhm blog]]></title>
+  <link href="http://qiuhm.github.io/atom.xml" rel="self"/>
+  <link href="http://qiuhm.github.io/"/>
+  <updated>2015-12-30T17:27:28+08:00</updated>
+  <id>http://qiuhm.github.io/</id>
+  <author>
+    <name><![CDATA[qiuhm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[hello world]]></title>
+    <link href="http://qiuhm.github.io/blog/2015/12/30/hello-world/"/>
+    <updated>2015-12-30T17:17:36+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2015/12/30/hello-world</id>
+    <content type="html"><![CDATA[<h2>Hello world</h2>
+]]></content>
+  </entry>
+  
+</feed>
