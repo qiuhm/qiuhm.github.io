@@ -105,3 +105,8 @@ facebook_like: false
 
 #weibo_share
 weibo_share: true
+
+# duoshuo comments
+duoshuo_comments: true
+duoshuo_short_name: qiuhm
+
