@@ -9,14 +9,11 @@
   <meta name="author" content="qiuhm">
 
   
-  <meta name="description" content="最近在研究facebook的开源工具infer，它是一个静态扫描工具，可以分析 Objective-C， Java 或者 C 代码，我按照官方说明在本地进行了安装，遇到了很多环境的问题，把安装说明详细的记录下来，供大家参考。 一、安装依赖 需要安装如下依赖： 1
-2
-3
-4
-5
-6
-7
-- &hellip;">
+  <meta name="description" content="一、OCLint是什么 OCLint是一款静态扫描工具，可以扫描C,C++,OC。扫描出的主要问题包括：
+空的if/else/try/catch/finally 语句
+未使用的代码，包括未使用的局部变量、传参
+复杂的代码
+switch语句里break未加 等 二、 OCLint安装 1.下载编译包 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +70,109 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao/">OCLint(静态扫描工具)介绍</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-14T12:47:57+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:47 pm</span></time>
+        
+        
+          | <a href="/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao/#comments">Comments</a>
+         
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>一、OCLint是什么</h3>
+
+<p>  OCLint是一款静态扫描工具，可以扫描C,C++,OC。扫描出的主要问题包括：<br>
+空的if/else/try/catch/finally 语句<br>
+未使用的代码，包括未使用的局部变量、传参<br>
+复杂的代码<br>
+switch语句里break未加 等<br></p>
+
+<h3>二、 OCLint安装</h3>
+
+<h4>1.下载编译包</h4>
+
+<p>附上下载
+<a href="https://github.com/oclint/oclint/releases">OCLint官方包</a>、
+<a href="../download/oclint.zip">本人整理后的包，筛选了自定义规则</a><br>
+下载后解压存到某个文件夹，我是放到~/libtool,所以我的OCLINT_HOME为~/libtool/oclint</p>
+
+<h4>2.配置环境变量</h4>
+
+<p>修改~/.bash_profile(或/etc/profile)文件（如无,可创建一个）,添加如下脚本<br>
+OCLINT_HOME=~/libtool/oclint<br>
+PATH=$OCLINT_HOME/bin:$PATH</p>
+
+<h4>3.配置ocLint配置文件（非必须）</h4>
+
+<h5>a.全局配置文件</h5>
+
+<p>该文件存储在<code>$(/path/to/bin/oclint)/../etc/oclint</code>，对整个系统生效，由于我的oclint路径为<code>~/libtool/oclint/bin/oclint</code>,则我的全局oclint文件路径为<code>~/libtool/oclint/bin/etc/oclint</code></p>
+
+<h5>b.用户配置文件</h5>
+
+<p>新建.oclint文件，存于～目录下，该配置文件对该用户生效</p>
+
+<h5>c.项目级配置文件</h5>
+
+<p>新建oclint文件，放在project的主目录</p>
+
+<h5>d.配置文件优先级</h5>
+
+<p>项目级配置文件>用户配置文件>全局配置文件</p>
+
+<h3>三、OCLint安装目录解析</h3>
+
+<p>oclint<br>
+|-bin<br>
+|-lib<br>
+|&mdash;clang<br>
+|&mdash;&ndash;3.7.0<br>
+|&mdash;&mdash;-include<br>
+|&mdash;&mdash;-lib<br>
+|&mdash;oclint<br>
+|&mdash;&ndash;rules #oclint默认的规则目录<br>
+|&mdash;&ndash;customRules  #我配置的自定义规则文件夹<br>
+|&mdash;&ndash;reporters</p>
+
+<h3>四、OCLint使用</h3>
+
+<h4>1、OCLint直接嵌入xcode工程</h4>
+
+<p>（未完待续）</p>
+
+<h4>2、OCLint接入jenkins持续集成</h4>
+
+<p>（未完待续）</p>
+
+<h4>3、OCLint配置文件解析</h4>
+
+<p>（未完待续）</p>
+
+<h4>4、OCLint规则解析</h4>
+
+<p>（未完待续）</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -249,6 +349,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao/">OCLint(静态扫描工具)介绍</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/31/li-yong-facebook-slash-infergong-ju-sao-miao-ocdai-ma/">利用facebook/infer工具扫描oc代码</a>
       </li>
     
@@ -269,7 +373,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - qiuhm -
+  Copyright &copy; 2016 - qiuhm -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

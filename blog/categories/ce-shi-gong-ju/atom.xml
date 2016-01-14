@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 测试工具 | qiuhm blog]]></title>
   <link href="http://qiuhm.github.io/blog/categories/ce-shi-gong-ju/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2015-12-31T18:04:02+08:00</updated>
+  <updated>2016-01-14T14:02:53+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OCLint(静态扫描工具)介绍]]></title>
+    <link href="http://qiuhm.github.io/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao/"/>
+    <updated>2016-01-14T12:47:57+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao</id>
+    <content type="html"><![CDATA[<h3>一、OCLint是什么</h3>
+
+<p>  OCLint是一款静态扫描工具，可以扫描C,C++,OC。扫描出的主要问题包括：<br>
+空的if/else/try/catch/finally 语句<br>
+未使用的代码，包括未使用的局部变量、传参<br>
+复杂的代码<br>
+switch语句里break未加 等<br></p>
+
+<h3>二、 OCLint安装</h3>
+
+<h4>1.下载编译包</h4>
+
+<p>附上下载
+<a href="https://github.com/oclint/oclint/releases">OCLint官方包</a>、
+<a href="../download/oclint.zip">本人整理后的包，筛选了自定义规则</a><br>
+下载后解压存到某个文件夹，我是放到~/libtool,所以我的OCLINT_HOME为~/libtool/oclint</p>
+
+<h4>2.配置环境变量</h4>
+
+<p>修改~/.bash_profile(或/etc/profile)文件（如无,可创建一个）,添加如下脚本<br>
+OCLINT_HOME=~/libtool/oclint<br>
+PATH=$OCLINT_HOME/bin:$PATH</p>
+
+<h4>3.配置ocLint配置文件（非必须）</h4>
+
+<h5>a.全局配置文件</h5>
+
+<p>该文件存储在<code>$(/path/to/bin/oclint)/../etc/oclint</code>，对整个系统生效，由于我的oclint路径为<code>~/libtool/oclint/bin/oclint</code>,则我的全局oclint文件路径为<code>~/libtool/oclint/bin/etc/oclint</code></p>
+
+<h5>b.用户配置文件</h5>
+
+<p>新建.oclint文件，存于～目录下，该配置文件对该用户生效</p>
+
+<h5>c.项目级配置文件</h5>
+
+<p>新建oclint文件，放在project的主目录</p>
+
+<h5>d.配置文件优先级</h5>
+
+<p>项目级配置文件>用户配置文件>全局配置文件</p>
+
+<h3>三、OCLint安装目录解析</h3>
+
+<p>oclint<br>
+|-bin<br>
+|-lib<br>
+|&mdash;clang<br>
+|&mdash;&ndash;3.7.0<br>
+|&mdash;&mdash;-include<br>
+|&mdash;&mdash;-lib<br>
+|&mdash;oclint<br>
+|&mdash;&ndash;rules #oclint默认的规则目录<br>
+|&mdash;&ndash;customRules  #我配置的自定义规则文件夹<br>
+|&mdash;&ndash;reporters</p>
+
+<h3>四、OCLint使用</h3>
+
+<h4>1、OCLint直接嵌入xcode工程</h4>
+
+<p>（未完待续）</p>
+
+<h4>2、OCLint接入jenkins持续集成</h4>
+
+<p>（未完待续）</p>
+
+<h4>3、OCLint配置文件解析</h4>
+
+<p>（未完待续）</p>
+
+<h4>4、OCLint规则解析</h4>
+
+<p>（未完待续）</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[利用facebook/infer工具扫描oc代码]]></title>
