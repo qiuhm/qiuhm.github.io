@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 测试工具 | qiuhm blog]]></title>
   <link href="http://qiuhm.github.io/blog/categories/ce-shi-gong-ju/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2016-01-16T17:23:29+08:00</updated>
+  <updated>2016-01-16T18:41:59+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -29,8 +29,12 @@
 <h3>开始嵌入xcode</h3>
 
 <p>1、在工程中新建一个target(比如取名为OCLint)，类型为Aggregate<br>
-<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/newTarget.png" alt="新建类型为Aggregate的target" /><br>
-2、在该target->Build Phases里新建脚本<br>
+<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/newTarget.png" alt="新建类型为Aggregate的target" /><br></p>
+
+<!-- more -->
+
+
+<p>2、在该target->Build Phases里新建脚本<br>
 <img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/newPhase.png" alt="新建script" /><br>
 3、编辑脚本如下<br></p>
 
