@@ -15,7 +15,7 @@ switch语句里break未加 等<br>
 ####1.下载编译包
 附上下载
 [OCLint官方包](https://github.com/oclint/oclint/releases)、
-[本人整理后的包，筛选了自定义规则](../download/oclint.zip)<br>
+[本人整理后的包，筛选了自定义规则](https://raw.githubusercontent.com/qiuhm/Resource/master/download/oclint.zip)<br>
 下载后解压存到某个文件夹，我是放到~/libtool,所以我的OCLINT_HOME为~/libtool/oclint
 ####2.配置环境变量
 修改~/.bash_profile(或/etc/profile)文件（如无,可创建一个）,添加如下脚本<br>
@@ -44,7 +44,7 @@ oclint<br>
 |-----reporters
 ###四、OCLint使用
 ####1、OCLint直接嵌入xcode工程
-![OCLint嵌入到Xcode IDE](http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/)
+[OCLint嵌入到Xcode IDE](http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/)
 ####2、OCLint接入jenkins持续集成
 （未完待续）
 ####3、OCLint配置文件解析

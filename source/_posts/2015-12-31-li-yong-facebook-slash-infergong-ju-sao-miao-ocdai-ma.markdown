@@ -47,7 +47,7 @@ cd /～/libtool/infer/examples/ios_hello/HelloWorldApp
 infer -- clang -c Hello.m
 ```
 >执行结果如下：
->![单个文件的扫描结果](../blogpic/infer/single.jpg)
+>![单个文件的扫描结果](https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/single.jpg)
 ####2.分析整个项目（本人做iOS的，以iOS为例）
 ```
 cd /~/libtool/infer/examples/ios_hello
@@ -55,14 +55,14 @@ xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator clean
 infer -- xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator
 ```
 >执行结果如下：
->![项目的扫描结果](../blogpic/infer/project.jpg)
+>![项目的扫描结果](https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/project.jpg)
 ###四、执行inferTraceBugs查看问题
 >切换到存在infer-out目录的文件夹，执行
 ```
 inferTraceBugs --html
 ```
 >点击打开生成的html，大致如图
->![html报告](../blogpic/infer/html.jpg)
+>![html报告](https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/html.jpg)
 
 >附录
 >>1.[infer详细介绍](http://fbinfer.com/)

@@ -12,9 +12,9 @@ categories: 测试工具
 3、xcode commandLine已安装
 ###开始嵌入xcode
 1、在工程中新建一个target(比如取名为OCLint)，类型为Aggregate<br>
-![新建类型为Aggregate的target](../blogpic/oclint/newTarget.png)<br>
+![新建类型为Aggregate的target](https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/newTarget.png)<br>
 2、在该target->Build Phases里新建脚本<br>
-![新建script](../blogpic/oclint/newPhase.png)<br>
+![新建script](https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/newPhase.png)<br>
 3、编辑脚本如下<br>
 
 
@@ -48,7 +48,7 @@ oclint-json-compilation-database -- -report-type xcode
 echo "******** end analyzing ********"
 ```
 4、切换scheme到刚才新建的这个target，按快捷键（command+B），开始编译<br>
-![扫描出的警告](../blogpic/oclint/warning.png)<br>
+![扫描出的警告](https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/warning.png)<br>
 ###附录
 [https://github.com/qiuhm/OCLintDemo](OCLintDemo)
 
