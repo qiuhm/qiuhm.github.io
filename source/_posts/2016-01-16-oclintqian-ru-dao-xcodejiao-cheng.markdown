@@ -4,6 +4,10 @@ title: "oclint嵌入到xcode教程"
 date: 2016-01-16 12:01:27 +0800
 comments: true
 categories: 测试工具
+tags: [oclint,xcode,静态扫描]
+keywords: oclint,xcode,静态扫描
+description: 讲解如何将oclint静态扫描工具嵌入xcode IDE
+
 ---
 前一篇讲了oclint的安装及配置，现在要将oclint运用到实际的项目中，平时iOS开发和测试跟xcode打交道最多，so如何将oclint运用到xcode IDE中呢？
 ###环境准备
@@ -13,6 +17,7 @@ categories: 测试工具
 ###开始嵌入xcode
 1、在工程中新建一个target(比如取名为OCLint)，类型为Aggregate<br>
 ![新建类型为Aggregate的target](https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/newTarget.png)<br>
+<!-- more -->
 2、在该target->Build Phases里新建脚本<br>
 ![新建script](https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/newPhase.png)<br>
 3、编辑脚本如下<br>
