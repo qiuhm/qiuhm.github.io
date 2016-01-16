@@ -3,7 +3,7 @@ layout: post
 title: "OCLint(静态扫描工具)介绍"
 date: 2016-01-14 12:47:57 +0800
 comments: true
-categories: 测试工具
+categories: test-tools
 ---
 ###一、OCLint是什么
   OCLint是一款静态扫描工具，可以扫描C,C++,OC。扫描出的主要问题包括：<br>

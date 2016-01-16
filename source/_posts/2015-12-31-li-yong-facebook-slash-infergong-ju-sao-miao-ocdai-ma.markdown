@@ -3,7 +3,7 @@ layout: post
 title: "利用facebook/infer工具扫描oc代码"
 date: 2015-12-31 17:52:53 +0800
 comments: true
-categories: "测试工具"
+categories: test-tools
 ---
 >最近在研究facebook的开源工具infer，它是一个静态扫描工具，可以分析 Objective-C， Java 或者 C 代码，我按照官方说明在本地进行了安装，遇到了很多环境的问题，把安装说明详细的记录下来，供大家参考。
 ###一、安装依赖
