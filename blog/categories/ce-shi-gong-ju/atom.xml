@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 测试工具 | qiuhm blog]]></title>
   <link href="http://qiuhm.github.io/blog/categories/ce-shi-gong-ju/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2016-01-14T14:02:53+08:00</updated>
+  <updated>2016-01-16T12:50:52+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Oclint嵌入到xcode教程]]></title>
+    <link href="http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/"/>
+    <updated>2016-01-16T12:01:27+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng</id>
+    <content type="html"><![CDATA[<p>前一篇讲了oclint的安装及配置，现在要将oclint运用到实际的项目中，平时iOS开发和测试跟xcode打交道最多，so如何将oclint运用到xcode IDE中呢？</p>
+
+<h3>环境准备</h3>
+
+<p>1、oclint已安装配置<br>
+2、xcode已安装<br>
+3、xcode commandLine已安装</p>
+
+<h3>开始嵌入xcode</h3>
+
+<p>1、在工程中新建一个target(比如取名为OCLint)，类型为Aggregate<br>
+<img src="../blogpic/oclint/newTarget.png" alt="新建类型为Aggregate的target" /><br>
+2、在该target->Build Phases里新建脚本<br>
+<img src="../blogpic/oclint/newPhase.png" alt="新建script" /><br>
+3、编辑脚本如下<br></p>
+
+<pre><code>source ~/.bash_profile
+
+echo "******** start check the oclint ********"
+hash oclint &amp;&gt; /dev/null
+if [ $? -eq 1 ]; then
+echo &gt;&amp;2 "oclint not found, analyzing stopped"
+exit 1
+fi
+echo "******** end check the oclint ********"
+echo "******** start clean the environment ********"
+cd ${SRCROOT}
+rm -rf **/compile_commands.json
+rm -rf **/oclint.xml
+xctool -scheme ${PROJECT_NAME} clean
+echo "******** end clean the environment ********"
+
+echo "******** start building ********"
+xctool \
+-project ${PROJECT_NAME}.xcodeproj  \
+-scheme ${PROJECT_NAME} \
+-reporter json-compilation-database:compile_commands.json \
+build
+echo "******** end building ********"
+
+echo "******** start analyzing ********"
+oclint-json-compilation-database -- -report-type xcode
+echo "******** end analyzing ********"
+</code></pre>
+
+<p>4、切换scheme到刚才新建的这个target，按快捷键（command+B），开始编译<br>
+<img src="../blogpic/oclint/warning.png" alt="扫描出的警告" /><br></p>
+
+<h3>附录</h3>
+
+<p><a href="OCLintDemo">https://github.com/qiuhm/OCLintDemo</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OCLint(静态扫描工具)介绍]]></title>

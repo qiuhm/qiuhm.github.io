@@ -5,15 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OCLint(静态扫描工具)介绍 - qiuhm blog</title>
+  <title>Oclint嵌入到xcode教程 - qiuhm blog</title>
   <meta name="author" content="qiuhm">
 
   
-  <meta name="description" content="一、OCLint是什么 OCLint是一款静态扫描工具，可以扫描C,C++,OC。扫描出的主要问题包括：
-空的if/else/try/catch/finally 语句
-未使用的代码，包括未使用的局部变量、传参
-复杂的代码
-switch语句里break未加 等 二、 OCLint安装 1.下载编译包 &hellip;">
+  <meta name="description" content="前一篇讲了oclint的安装及配置，现在要将oclint运用到实际的项目中，平时iOS开发和测试跟xcode打交道最多，so如何将oclint运用到xcode IDE中呢？ 环境准备 1、oclint已安装配置
+2、xcode已安装
+3、xcode commandLine已安装 开始嵌入xcode &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +20,7 @@ switch语句里break未加 等 二、 OCLint安装 1.下载编译包 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://qiuhm.github.io/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao/">
+  <link rel="canonical" href="http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="qiuhm blog" type="application/atom+xml">
@@ -73,7 +71,7 @@ switch语句里break未加 等 二、 OCLint安装 1.下载编译包 &hellip;">
   
   <header>
     
-      <h1 class="entry-title">OCLint(静态扫描工具)介绍</h1>
+      <h1 class="entry-title">Oclint嵌入到xcode教程</h1>
     
     
       <p class="meta">
@@ -82,7 +80,7 @@ switch语句里break未加 等 二、 OCLint安装 1.下载编译包 &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-01-14T12:47:57+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:47 pm</span></time>
+<time class='entry-date' datetime='2016-01-16T12:01:27+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:01 pm</span></time>
         
         
           | <a href="#comments">Comments</a>
@@ -92,78 +90,84 @@ switch语句里break未加 等 二、 OCLint安装 1.下载编译包 &hellip;">
   </header>
 
 
-<div class="entry-content"><h3>一、OCLint是什么</h3>
+<div class="entry-content"><p>前一篇讲了oclint的安装及配置，现在要将oclint运用到实际的项目中，平时iOS开发和测试跟xcode打交道最多，so如何将oclint运用到xcode IDE中呢？</p>
 
-<p>  OCLint是一款静态扫描工具，可以扫描C,C++,OC。扫描出的主要问题包括：<br>
-空的if/else/try/catch/finally 语句<br>
-未使用的代码，包括未使用的局部变量、传参<br>
-复杂的代码<br>
-switch语句里break未加 等<br></p>
+<h3>环境准备</h3>
 
-<h3>二、 OCLint安装</h3>
+<p>1、oclint已安装配置<br>
+2、xcode已安装<br>
+3、xcode commandLine已安装</p>
 
-<h4>1.下载编译包</h4>
+<h3>开始嵌入xcode</h3>
 
-<p>附上下载
-<a href="https://github.com/oclint/oclint/releases">OCLint官方包</a>、
-<a href="../download/oclint.zip">本人整理后的包，筛选了自定义规则</a><br>
-下载后解压存到某个文件夹，我是放到~/libtool,所以我的OCLINT_HOME为~/libtool/oclint</p>
+<p>1、在工程中新建一个target(比如取名为OCLint)，类型为Aggregate<br>
+<img src="../blogpic/oclint/newTarget.png" alt="新建类型为Aggregate的target" /><br>
+2、在该target->Build Phases里新建脚本<br>
+<img src="../blogpic/oclint/newPhase.png" alt="新建script" /><br>
+3、编辑脚本如下<br></p>
 
-<h4>2.配置环境变量</h4>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'>echo "******** start check the oclint ********"
+</span><span class='line'>hash oclint &&gt; /dev/null
+</span><span class='line'>if [ $? -eq 1 ]; then
+</span><span class='line'>echo &gt;&2 "oclint not found, analyzing stopped"
+</span><span class='line'>exit 1
+</span><span class='line'>fi
+</span><span class='line'>echo "******** end check the oclint ********"
+</span><span class='line'>echo "******** start clean the environment ********"
+</span><span class='line'>cd ${SRCROOT}
+</span><span class='line'>rm -rf **/compile_commands.json
+</span><span class='line'>rm -rf **/oclint.xml
+</span><span class='line'>xctool -scheme ${PROJECT_NAME} clean
+</span><span class='line'>echo "******** end clean the environment ********"
+</span><span class='line'>
+</span><span class='line'>echo "******** start building ********"
+</span><span class='line'>xctool \
+</span><span class='line'>-project ${PROJECT_NAME}.xcodeproj  \
+</span><span class='line'>-scheme ${PROJECT_NAME} \
+</span><span class='line'>-reporter json-compilation-database:compile_commands.json \
+</span><span class='line'>build
+</span><span class='line'>echo "******** end building ********"
+</span><span class='line'>
+</span><span class='line'>echo "******** start analyzing ********"
+</span><span class='line'>oclint-json-compilation-database -- -report-type xcode
+</span><span class='line'>echo "******** end analyzing ********"</span></code></pre></td></tr></table></div></figure>
 
-<p>修改~/.bash_profile(或/etc/profile)文件（如无,可创建一个）,添加如下脚本<br>
-OCLINT_HOME=~/libtool/oclint<br>
-PATH=$OCLINT_HOME/bin:$PATH</p>
 
-<h4>3.配置ocLint配置文件（非必须）</h4>
+<p>4、切换scheme到刚才新建的这个target，按快捷键（command+B），开始编译<br>
+<img src="../blogpic/oclint/warning.png" alt="扫描出的警告" /><br></p>
 
-<h5>a.全局配置文件</h5>
+<h3>附录</h3>
 
-<p>该文件存储在<code>$(/path/to/bin/oclint)/../etc/oclint</code>，对整个系统生效，由于我的oclint路径为<code>~/libtool/oclint/bin/oclint</code>,则我的全局oclint文件路径为<code>~/libtool/oclint/bin/etc/oclint</code></p>
-
-<h5>b.用户配置文件</h5>
-
-<p>新建.oclint文件，存于～目录下，该配置文件对该用户生效</p>
-
-<h5>c.项目级配置文件</h5>
-
-<p>新建oclint文件，放在project的主目录</p>
-
-<h5>d.配置文件优先级</h5>
-
-<p>项目级配置文件>用户配置文件>全局配置文件</p>
-
-<h3>三、OCLint安装目录解析</h3>
-
-<p>oclint<br>
-|-bin<br>
-|-lib<br>
-|&mdash;clang<br>
-|&mdash;&ndash;3.7.0<br>
-|&mdash;&mdash;-include<br>
-|&mdash;&mdash;-lib<br>
-|&mdash;oclint<br>
-|&mdash;&ndash;rules #oclint默认的规则目录<br>
-|&mdash;&ndash;customRules  #我配置的自定义规则文件夹<br>
-|&mdash;&ndash;reporters</p>
-
-<h3>四、OCLint使用</h3>
-
-<h4>1、OCLint直接嵌入xcode工程</h4>
-
-<p>（未完待续）</p>
-
-<h4>2、OCLint接入jenkins持续集成</h4>
-
-<p>（未完待续）</p>
-
-<h4>3、OCLint配置文件解析</h4>
-
-<p>（未完待续）</p>
-
-<h4>4、OCLint规则解析</h4>
-
-<p>（未完待续）</p>
+<p><a href="OCLintDemo">https://github.com/qiuhm/OCLintDemo</a></p>
 </div>
 
 
@@ -179,7 +183,7 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
 
 
 
-<time class='entry-date' datetime='2016-01-14T12:47:57+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:47 pm</span></time>
+<time class='entry-date' datetime='2016-01-16T12:01:27+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:01 pm</span></time>
       
 
 <span class="categories">
@@ -230,10 +234,8 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/12/31/li-yong-facebook-slash-infergong-ju-sao-miao-ocdai-ma/" title="Previous Post: 利用facebook/infer工具扫描oc代码">&laquo; 利用facebook/infer工具扫描oc代码</a>
+        <a class="basic-alignment left" href="/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao/" title="Previous Post: OCLint(静态扫描工具)介绍">&laquo; OCLint(静态扫描工具)介绍</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/" title="Next Post: oclint嵌入到xcode教程">oclint嵌入到xcode教程 &raquo;</a>
       
     </p>
   </footer>
@@ -249,7 +251,7 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
 </head>
 <body>
 <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-title="OCLint(静态扫描工具)介绍"></div>
+<div class="ds-thread" data-title="Oclint嵌入到xcode教程"></div>
 <script type="text/javascript">
   var duoshuoQuery = {short_name:"qiuhm"};
   (function() {
