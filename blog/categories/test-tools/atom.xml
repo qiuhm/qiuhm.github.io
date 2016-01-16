@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: 测试工具 | qiuhm blog]]></title>
-  <link href="http://qiuhm.github.io/blog/categories/ce-shi-gong-ju/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Test-tools | qiuhm blog]]></title>
+  <link href="http://qiuhm.github.io/blog/categories/test-tools/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2016-01-16T18:41:59+08:00</updated>
+  <updated>2016-01-16T23:21:05+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
