@@ -4,7 +4,7 @@
   <title><![CDATA[qiuhm blog]]></title>
   <link href="http://qiuhm.github.io/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2016-01-16T17:19:53+08:00</updated>
+  <updated>2016-01-16T17:23:29+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -91,7 +91,7 @@
 
 
 <p>4、切换scheme到刚才新建的这个target，按快捷键（command+B），开始编译<br>
-<img src="https://github.com/qiuhm/Resource/blob/master//blogpic/oclint/warning.png" alt="扫描出的警告" /><br></p>
+<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/oclint/warning.png" alt="扫描出的警告" /><br></p>
 
 <h3>附录</h3>
 
@@ -163,7 +163,7 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
 
 <h4>1、OCLint直接嵌入xcode工程</h4>
 
-<p><img src="http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/" alt="OCLint嵌入到Xcode IDE" /></p>
+<p><a href="http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/">OCLint嵌入到Xcode IDE</a></p>
 
 <h4>2、OCLint接入jenkins持续集成</h4>
 
