@@ -44,7 +44,7 @@ oclint<br>
 |-----reporters
 ###四、OCLint使用
 ####1、OCLint直接嵌入xcode工程
-（未完待续）
+![OCLint嵌入到Xcode IDE](http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/)
 ####2、OCLint接入jenkins持续集成
 （未完待续）
 ####3、OCLint配置文件解析
