@@ -20,9 +20,10 @@ subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
-weibo_user: qiuhm  # 微博数字 ID 或域名 ID
+weibo_user: 2062746601  # 微博数字 ID 或域名 ID
 dribbble_user: 
 weibo_share: true # 是否开启微博分享按钮
+sina_weibo_follow_button: true
 
 # ----------------------- #
 #    Jekyll & Plugins     #
@@ -54,7 +55,7 @@ titlecase: true       # Converts page and post titles to titlecase
 
 # list each of the sidebar modules you want to include, in the order you want them to appear.
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
-default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, asides/category_list.html, custom/asides/weibo.html,]
+default_asides: [custom/asides/weibo.html, custom/asides/about.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, asides/category_list.html]
 
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
 # and add an array with the asides you want to use.
