@@ -202,39 +202,12 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
 
 <p>项目级配置文件>用户配置文件>全局配置文件</p>
 
-<h3>三、OCLint安装目录解析</h3>
-
-<p>oclint<br>
-|-bin<br>
-|-lib<br>
-|&mdash;clang<br>
-|&mdash;&ndash;3.7.0<br>
-|&mdash;&mdash;-include<br>
-|&mdash;&mdash;-lib<br>
-|&mdash;oclint<br>
-|&mdash;&ndash;rules #oclint默认的规则目录<br>
-|&mdash;&ndash;customRules  #我配置的自定义规则文件夹<br>
-|&mdash;&ndash;reporters</p>
-
-<h3>四、OCLint使用</h3>
-
-<h4>1、OCLint直接嵌入xcode工程</h4>
-
-<p><a href="http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/">OCLint嵌入到Xcode IDE</a></p>
-
-<h4>2、OCLint接入jenkins持续集成</h4>
-
-<p>（未完待续）</p>
-
-<h4>3、OCLint配置文件解析</h4>
-
-<p>（未完待续）</p>
-
-<h4>4、OCLint规则解析</h4>
-
-<p>（未完待续）</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao/">阅读更多</a>
+    </footer>
   
 
 
@@ -294,77 +267,14 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
 
 <p>该预编译包包含clang and facebook-clang-plugins，减少自己编译clang和facebook-clang-plugins的时间。
 <a href="https://github.com/facebook/infer/releases">下载链接</a>
-建议下载最新的包，格式为infer-osx-v0.5.0.tar.xz，解压后存到你想要放置的目录（我放在~/libtool）</p>
+建议下载最新的包，格式为infer-osx-v0.5.0.tar.xz，解压后存到你想要放置的目录（我放在~/libtool）</p></blockquote>
 
-<h4>2.设置环境变量</h4>
-
-<p>将/~/libtool/infer/infer/bin加到环境变量里</p></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/profile</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>INFER_HOME=/～/libtool/infer/infer
-</span><span class='line'>PATH=$INFER_HOME/bin:$PATH</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>将~替换成你的主目录路径</p>
-
-<h4>3.build infer</h4></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /～/libtool/infer
-</span><span class='line'>./build-infer.sh</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>大概等1分钟左右，没有报错的话，则infer安装完成。如果有报错，可能是少了某些依赖，需要根据补全相关的依赖，再重新build infer。</p>
-
-<h3>三、运行example</h3>
-
-<h4>1.分析单个文件</h4></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /～/libtool/infer/examples/ios_hello/HelloWorldApp
-</span><span class='line'>infer -- clang -c Hello.m</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>执行结果如下：
-<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/single.jpg" alt="单个文件的扫描结果" /></p>
-
-<h4>2.分析整个项目（本人做iOS的，以iOS为例）</h4></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /~/libtool/infer/examples/ios_hello
-</span><span class='line'>xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator clean
-</span><span class='line'>infer -- xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>执行结果如下：
-<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/project.jpg" alt="项目的扫描结果" /></p>
-
-<h3>四、执行inferTraceBugs查看问题</h3>
-
-<p>切换到存在infer-out目录的文件夹，执行</p></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>inferTraceBugs --html</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>点击打开生成的html，大致如图
-<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/html.jpg" alt="html报告" /></p>
-
-<p>附录</p>
-
-<blockquote><p>1.<a href="http://fbinfer.com/">infer详细介绍</a>
-2.<a href="https://github.com/facebook/infer">facebook/infer源码</a></p></blockquote></blockquote>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/31/li-yong-facebook-slash-infergong-ju-sao-miao-ocdai-ma/">阅读更多</a>
+    </footer>
   
 
 

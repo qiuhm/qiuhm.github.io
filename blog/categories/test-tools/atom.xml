@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Test-tools | qiuhm blog]]></title>
   <link href="http://qiuhm.github.io/blog/categories/test-tools/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2016-01-16T23:21:05+08:00</updated>
+  <updated>2016-01-17T00:22:32+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -122,6 +122,9 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
 
 <p>项目级配置文件>用户配置文件>全局配置文件</p>
 
+<!-- more -->
+
+
 <h3>三、OCLint安装目录解析</h3>
 
 <p>oclint<br>
@@ -184,11 +187,14 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
 
 <p>该预编译包包含clang and facebook-clang-plugins，减少自己编译clang和facebook-clang-plugins的时间。
 <a href="https://github.com/facebook/infer/releases">下载链接</a>
-建议下载最新的包，格式为infer-osx-v0.5.0.tar.xz，解压后存到你想要放置的目录（我放在~/libtool）</p>
+建议下载最新的包，格式为infer-osx-v0.5.0.tar.xz，解压后存到你想要放置的目录（我放在~/libtool）</p></blockquote>
+
+<!-- more -->
+
 
 <h4>2.设置环境变量</h4>
 
-<p>将/~/libtool/infer/infer/bin加到环境变量里
+<blockquote><p>将/~/libtool/infer/infer/bin加到环境变量里
 <code>
 sudo vi /etc/profile
 </code>
