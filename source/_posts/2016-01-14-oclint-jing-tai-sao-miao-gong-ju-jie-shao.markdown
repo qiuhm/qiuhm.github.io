@@ -30,6 +30,7 @@ PATH=$OCLINT_HOME/bin:$PATH
 新建oclint文件，放在project的主目录
 #####d.配置文件优先级
 项目级配置文件>用户配置文件>全局配置文件
+<!-- more -->
 ###三、OCLint安装目录解析
 oclint<br>
 |-bin<br>

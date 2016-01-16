@@ -24,6 +24,7 @@ categories: test-tools
 >该预编译包包含clang and facebook-clang-plugins，减少自己编译clang和facebook-clang-plugins的时间。
 >[下载链接](https://github.com/facebook/infer/releases)
 >建议下载最新的包，格式为infer-osx-v0.5.0.tar.xz，解压后存到你想要放置的目录（我放在~/libtool）
+<!-- more -->
 ####2.设置环境变量
 >将/~/libtool/infer/infer/bin加到环境变量里
 ```
