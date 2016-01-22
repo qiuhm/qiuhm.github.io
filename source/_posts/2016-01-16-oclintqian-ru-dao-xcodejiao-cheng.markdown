@@ -3,7 +3,7 @@ layout: post
 title: "oclint嵌入到xcode教程"
 date: 2016-01-16 12:01:27 +0800
 comments: true
-categories: test-tools
+categories: test-tools codeAnalyzer
 tags: [oclint,xcode,静态扫描]
 keywords: oclint,xcode,静态扫描
 description: 讲解如何将oclint静态扫描工具嵌入xcode IDE
