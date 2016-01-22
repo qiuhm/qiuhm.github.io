@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tools | qiuhm's blog]]></title>
+  <link href="http://qiuhm.github.io/blog/categories/tools/atom.xml" rel="self"/>
+  <link href="http://qiuhm.github.io/"/>
+  <updated>2016-01-22T18:08:03+08:00</updated>
+  <id>http://qiuhm.github.io/</id>
+  <author>
+    <name><![CDATA[qiuhm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[如何处理oclint的warning误报]]></title>
+    <link href="http://qiuhm.github.io/blog/2016/01/22/ru-he-chu-li-oclintde-warningwu-bao/"/>
+    <updated>2016-01-22T17:50:29+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2016/01/22/ru-he-chu-li-oclintde-warningwu-bao</id>
+    <content type="html"><![CDATA[<p>用过静态扫描工具的都知道，在扫描工程时存在误报，比如未使用的参数，但有时iOS的默认写法即如此，那怎么处理呢？</br>方法如下：</p>
+
+<h3>一、在误报的行后面添加注释!OCLINT（推荐）</h3>
+
+<p>比如：
+<code>
+void a() {
+    int unusedLocalVariable; //!OCLINT
+}
+</code>
+但建议在注释里加下详细说明，为什么要忽略？</br>
+推荐写法:
+<code>
+void a() {
+    int unusedLocalVariable; //!OCLINT(the reason)
+}
+</code></p>
+
+<h3>二、添加注解</h3>
+
+<p>添加单条注解，忽略单条规则：
+<code>
+__attribute__((annotate("oclint:suppress[unused method parameter]")))
+</code>
+添加多条注解，忽略多条规则：
+<code>
+__attribute__((annotate("oclint:suppress[high cyclomatic complexity]"), annotate("oclint:suppress[high npath complexity]"), annotate("oclint:suppress[high ncss method]")))
+</code>
+忽略所有规则：
+<code>
+__attribute__((annotate("oclint:suppress")))
+</code>
+示例：
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bool &lt;strong&gt;attribute&lt;/strong&gt;((annotate(&ldquo;oclint:suppress&rdquo;))) aMethod(int aParameter)
+</span><span class='line'>{
+</span><span class='line'>    // 忽略整个方法的所有规则的warning
+</span><span class='line'>    // like unused aParameter variable and empty if statement
+</span><span class='line'>    if (1) {}&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;return true;
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;}&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;ul&gt;
+</span><span class='line'>&lt;li&gt;&lt;p&gt;(IBAction)turnoverValueChanged:
+</span><span class='line'>  (id) &lt;strong&gt;attribute&lt;/strong&gt;((annotate(&ldquo;oclint:suppress[unused method parameter]&rdquo;))) sender
+</span><span class='line'>  // 忽略sender可能未使用
+</span><span class='line'>{
+</span><span class='line'>  int i; // won&rsquo;t suppress this one
+</span><span class='line'>  [self calculateTurnover];
+</span><span class='line'>}&lt;/p&gt;&lt;/li&gt;
+</span><span class='line'>&lt;li&gt;&lt;p&gt;(void)dismissAllViews:(id)currentView parentView:(id)parentView
+</span><span class='line'> &lt;strong&gt;attribute&lt;/strong&gt;((annotate(&ldquo;oclint:suppress&rdquo;)))
+</span><span class='line'> // 忽略整个方法的所有规则的warning
+</span><span class='line'>{
+</span><span class='line'>  [self dismissTurnoverView];
+</span><span class='line'>  // plus 30+ lines of code of dismissing other views
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

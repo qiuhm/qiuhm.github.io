@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://qiuhm.github.io/blog/2016/01/22/ru-he-chu-li-oclintde-warningwu-bao/</loc>
+    <lastmod>2016-01-22T17:50:29+08:00</lastmod>
+  </url>
+  <url>
     <loc>http://qiuhm.github.io/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/</loc>
     <lastmod>2016-01-16T12:01:27+08:00</lastmod>
   </url>
@@ -27,5 +31,11 @@
   </url>
   <url>
     <loc>http://qiuhm.github.io/blog/categories/test-tools/</loc>
+  </url>
+  <url>
+    <loc>http://qiuhm.github.io/blog/categories/tools/</loc>
+  </url>
+  <url>
+    <loc>http://qiuhm.github.io/blog/categories/codeanalyzer/</loc>
   </url>
 </urlset>
