@@ -20,6 +20,6 @@ categories:
 - 2、编写规则的逻辑代码
 
 ### 编译包，copy自定义规则到oclint的安装目录 
-- [编译包的详细方法参照](http://gitlab.alibaba-inc.com/tingxuan.qhm/share/wikis/oclint-release-build)
+- [编译包的详细方法参照](http://qiuhm.github.io/blog/2016/04/28/how-to-build-oclint/)
 
 
