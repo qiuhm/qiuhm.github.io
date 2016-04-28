@@ -4,7 +4,7 @@
   <title><![CDATA[qiuhm's blog]]></title>
   <link href="http://qiuhm.github.io/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2016-04-28T18:52:30+08:00</updated>
+  <updated>2016-04-28T18:54:06+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[本地开发oclint自定义规则]]></title>
+    <link href="http://qiuhm.github.io/blog/2016/04/28/how-to-build-custom-rule/"/>
+    <updated>2016-04-28T18:39:31+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2016/04/28/how-to-build-custom-rule</id>
+    <content type="html"><![CDATA[<h3>开发前知识储备</h3>
+
+<ul>
+<li>1、<a href="http://docs.oclint.org/en/stable/devel/scaffolding.html#creating-rules-with-scaffolding">利用Scaffolding自动生成rule的模板文件</a></li>
+<li>2、<a href="http://clang.llvm.org/docs/IntroductionToTheClangAST.html">学习clang的ast相关知识</a></li>
+<li>3、<a href="https://en.wikipedia.org/wiki/Visitor_pattern">visitor pattern</a></li>
+<li>4、<a href="http://docs.oclint.org/en/stable/devel/clang.html">clang AST</a></li>
+<li>5、<a href="http://clang.llvm.org/docs/LibTooling.html">学习libtool,oclint基于该工具生成语法树</a></li>
+</ul>
+
+
+<h3>开始开发</h3>
+
+<ul>
+<li>1、使用scaffoldRule命令，快速创建rule
+使用oclint-scripts目录下的scaffoldRule创建规则文件
+如  <code>scaffoldRule -t SourceCodeReader -c log -n customerRule -p 3 --test CustomerSample</code></li>
+<li>2、编写规则的逻辑代码</li>
+</ul>
+
+
+<h3>编译包，copy自定义规则到oclint的安装目录</h3>
+
+<ul>
+<li><a href="http://gitlab.alibaba-inc.com/tingxuan.qhm/share/wikis/oclint-release-build">编译包的详细方法参照</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[本地编译oclint包]]></title>
+    <link href="http://qiuhm.github.io/blog/2016/04/28/how-to-build-oclint/"/>
+    <updated>2016-04-28T17:59:42+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2016/04/28/how-to-build-oclint</id>
+    <content type="html"><![CDATA[<p>进行自定义规则开发，必须在本地编译oclint的release包或debug包。</p>
+
+<h3>1、 编译release包</h3>
+
+<ul>
+<li>进入checkout的oclint目录，再进入到oclint-scripts目录</li>
+<li>执行<code>make</code></li>
+</ul>
+
+
+<h3>2、编译debug包</h3>
+
+<ul>
+<li>进入checkout的oclint目录，再进入到oclint-scripts目录</li>
+<li>执行<code>./ci -reset</code></li>
+<li>再执行<code>./ci -setup -release</code></li>
+</ul>
+
+
+<h3>3、编译后的包位置</h3>
+
+<p>${oclint-home}/build/oclint-release <br>
+<img src="../blogpic/oclint/oclint-release-location.png" alt="如图" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Oclint本地开发环境搭建]]></title>
+    <link href="http://qiuhm.github.io/blog/2016/04/28/oclint-develop-enviroment/"/>
+    <updated>2016-04-28T14:49:01+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2016/04/28/oclint-develop-enviroment</id>
+    <content type="html"><![CDATA[<h3>环境安装</h3>
+
+<p><a href="http://docs.oclint.org/en/stable/devel/requirements.html">需要安装的软件</a></p>
+
+<h3>checkout代码</h3>
+
+<ul>
+<li>oclint/oclint</li>
+<li>oclint/oclint-json-compilation-database</li>
+<li>oclint/oclint-xcodebuild</li>
+<li>llvm/clang</li>
+<li>googletest/googlemock<br>
+<a href="http://docs.oclint.org/en/stable/devel/checkout.html">详细安装文档</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[如何处理oclint的warning误报]]></title>

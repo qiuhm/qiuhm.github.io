@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Test-tools | qiuhm's blog]]></title>
   <link href="http://qiuhm.github.io/blog/categories/test-tools/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2016-04-28T18:52:30+08:00</updated>
+  <updated>2016-04-28T18:54:06+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[本地编译oclint包]]></title>
+    <link href="http://qiuhm.github.io/blog/2016/04/28/how-to-build-oclint/"/>
+    <updated>2016-04-28T17:59:42+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2016/04/28/how-to-build-oclint</id>
+    <content type="html"><![CDATA[<p>进行自定义规则开发，必须在本地编译oclint的release包或debug包。</p>
+
+<h3>1、 编译release包</h3>
+
+<ul>
+<li>进入checkout的oclint目录，再进入到oclint-scripts目录</li>
+<li>执行<code>make</code></li>
+</ul>
+
+
+<h3>2、编译debug包</h3>
+
+<ul>
+<li>进入checkout的oclint目录，再进入到oclint-scripts目录</li>
+<li>执行<code>./ci -reset</code></li>
+<li>再执行<code>./ci -setup -release</code></li>
+</ul>
+
+
+<h3>3、编译后的包位置</h3>
+
+<p>${oclint-home}/build/oclint-release <br>
+<img src="../blogpic/oclint/oclint-release-location.png" alt="如图" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Oclint本地开发环境搭建]]></title>
+    <link href="http://qiuhm.github.io/blog/2016/04/28/oclint-develop-enviroment/"/>
+    <updated>2016-04-28T14:49:01+08:00</updated>
+    <id>http://qiuhm.github.io/blog/2016/04/28/oclint-develop-enviroment</id>
+    <content type="html"><![CDATA[<h3>环境安装</h3>
+
+<p><a href="http://docs.oclint.org/en/stable/devel/requirements.html">需要安装的软件</a></p>
+
+<h3>checkout代码</h3>
+
+<ul>
+<li>oclint/oclint</li>
+<li>oclint/oclint-json-compilation-database</li>
+<li>oclint/oclint-xcodebuild</li>
+<li>llvm/clang</li>
+<li>googletest/googlemock<br>
+<a href="http://docs.oclint.org/en/stable/devel/checkout.html">详细安装文档</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[如何处理oclint的warning误报]]></title>
@@ -251,96 +305,6 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
 <h4>4、OCLint规则解析</h4>
 
 <p>（未完待续）</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[利用facebook/infer工具扫描oc代码]]></title>
-    <link href="http://qiuhm.github.io/blog/2015/12/31/li-yong-facebook-slash-infergong-ju-sao-miao-ocdai-ma/"/>
-    <updated>2015-12-31T17:52:53+08:00</updated>
-    <id>http://qiuhm.github.io/blog/2015/12/31/li-yong-facebook-slash-infergong-ju-sao-miao-ocdai-ma</id>
-    <content type="html"><![CDATA[<blockquote><p>最近在研究facebook的开源工具infer，它是一个静态扫描工具，可以分析 Objective-C， Java 或者 C 代码，我按照官方说明在本地进行了安装，遇到了很多环境的问题，把安装说明详细的记录下来，供大家参考。</p>
-
-<h3>一、安装依赖</h3>
-
-<p>需要安装如下依赖：</p></blockquote>
-
-<pre><code>- opam &gt;= 1.2.0 
-- Python 2.7
-- Java (only needed for the Java analysis)
-- clang in Xcode command line tools. You can install them with the command：xcode-select --install
-(only needed for the C/Objective-C analysis)
-- Xcode &gt;= 6.1 (only needed for the C/Objective-C analysis)
-- autoconf &gt;= 2.63 and automake &gt;= 1.11.1 (if building from git)
-</code></pre>
-
-<blockquote><p>我是macx os环境，基本是用homebrew工具安装依赖的，建议大家使用该工具，省去了一系列配置环境变量的事。</p>
-
-<h3>二、下载安装预编译包</h3>
-
-<h4>1.下载</h4>
-
-<p>该预编译包包含clang and facebook-clang-plugins，减少自己编译clang和facebook-clang-plugins的时间。
-<a href="https://github.com/facebook/infer/releases">下载链接</a>
-建议下载最新的包，格式为infer-osx-v0.5.0.tar.xz，解压后存到你想要放置的目录（我放在~/libtool）</p></blockquote>
-
-<!-- more -->
-
-
-<h4>2.设置环境变量</h4>
-
-<blockquote><p>将/~/libtool/infer/infer/bin加到环境变量里
-<code>
-sudo vi /etc/profile
-</code>
-<code>
-INFER_HOME=/～/libtool/infer/infer
-PATH=$INFER_HOME/bin:$PATH
-</code>
-将~替换成你的主目录路径</p>
-
-<h4>3.build infer</h4>
-
-<pre><code>cd /～/libtool/infer
-./build-infer.sh
-</code></pre>
-
-<p>大概等1分钟左右，没有报错的话，则infer安装完成。如果有报错，可能是少了某些依赖，需要根据补全相关的依赖，再重新build infer。</p>
-
-<h3>三、运行example</h3>
-
-<h4>1.分析单个文件</h4>
-
-<pre><code>cd /～/libtool/infer/examples/ios_hello/HelloWorldApp
-infer -- clang -c Hello.m
-</code></pre>
-
-<p>执行结果如下：
-<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/single.jpg" alt="单个文件的扫描结果" /></p>
-
-<h4>2.分析整个项目（本人做iOS的，以iOS为例）</h4>
-
-<pre><code>cd /~/libtool/infer/examples/ios_hello
-xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator clean
-infer -- xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator
-</code></pre>
-
-<p>执行结果如下：
-<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/project.jpg" alt="项目的扫描结果" /></p>
-
-<h3>四、执行inferTraceBugs查看问题</h3>
-
-<p>切换到存在infer-out目录的文件夹，执行
-<code>
-inferTraceBugs --html
-</code>
-点击打开生成的html，大致如图
-<img src="https://raw.githubusercontent.com/qiuhm/Resource/master/blogpic/infer/html.jpg" alt="html报告" /></p>
-
-<p>附录</p>
-
-<blockquote><p>1.<a href="http://fbinfer.com/">infer详细介绍</a>
-2.<a href="https://github.com/facebook/infer">facebook/infer源码</a></p></blockquote></blockquote>
 ]]></content>
   </entry>
   

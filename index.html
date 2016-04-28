@@ -9,11 +9,11 @@
   <meta name="author" content="qiuhm">
 
   
-  <meta name="description" content="用过静态扫描工具的都知道，在扫描工程时存在误报，比如未使用的参数，但有时iOS的默认写法即如此，那怎么处理呢？方法如下： 一、在误报的行后面添加注释!OCLINT（推荐） 比如： 1
-2
-3
-void a() { int unusedLocalVariable; //!OCLINT
-} &hellip;">
+  <meta name="description" content="开发前知识储备 1、利用Scaffolding自动生成rule的模板文件
+2、学习clang的ast相关知识
+3、visitor pattern
+4、clang AST
+5、学习libtool,oclint基于该工具生成语法树 开始开发 1、使用scaffoldRule命令，快速创建rule &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,164 @@ $(document).bind('DOMNodeInserted', function(event) {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/04/28/how-to-build-custom-rule/">本地开发oclint自定义规则</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-28T18:39:31+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:39 pm</span></time>
+        
+        
+          | <a href="/blog/2016/04/28/how-to-build-custom-rule/#comments">Comments</a>
+         
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>开发前知识储备</h3>
+
+<ul>
+<li>1、<a href="http://docs.oclint.org/en/stable/devel/scaffolding.html#creating-rules-with-scaffolding">利用Scaffolding自动生成rule的模板文件</a></li>
+<li>2、<a href="http://clang.llvm.org/docs/IntroductionToTheClangAST.html">学习clang的ast相关知识</a></li>
+<li>3、<a href="https://en.wikipedia.org/wiki/Visitor_pattern">visitor pattern</a></li>
+<li>4、<a href="http://docs.oclint.org/en/stable/devel/clang.html">clang AST</a></li>
+<li>5、<a href="http://clang.llvm.org/docs/LibTooling.html">学习libtool,oclint基于该工具生成语法树</a></li>
+</ul>
+
+
+<h3>开始开发</h3>
+
+<ul>
+<li>1、使用scaffoldRule命令，快速创建rule
+使用oclint-scripts目录下的scaffoldRule创建规则文件
+如  <code>scaffoldRule -t SourceCodeReader -c log -n customerRule -p 3 --test CustomerSample</code></li>
+<li>2、编写规则的逻辑代码</li>
+</ul>
+
+
+<h3>编译包，copy自定义规则到oclint的安装目录</h3>
+
+<ul>
+<li><a href="http://gitlab.alibaba-inc.com/tingxuan.qhm/share/wikis/oclint-release-build">编译包的详细方法参照</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/04/28/how-to-build-oclint/">本地编译oclint包</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-28T17:59:42+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:59 pm</span></time>
+        
+        
+          | <a href="/blog/2016/04/28/how-to-build-oclint/#comments">Comments</a>
+         
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>进行自定义规则开发，必须在本地编译oclint的release包或debug包。</p>
+
+<h3>1、 编译release包</h3>
+
+<ul>
+<li>进入checkout的oclint目录，再进入到oclint-scripts目录</li>
+<li>执行<code>make</code></li>
+</ul>
+
+
+<h3>2、编译debug包</h3>
+
+<ul>
+<li>进入checkout的oclint目录，再进入到oclint-scripts目录</li>
+<li>执行<code>./ci -reset</code></li>
+<li>再执行<code>./ci -setup -release</code></li>
+</ul>
+
+
+<h3>3、编译后的包位置</h3>
+
+<p>${oclint-home}/build/oclint-release <br>
+<img src="../blogpic/oclint/oclint-release-location.png" alt="如图" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/04/28/oclint-develop-enviroment/">Oclint本地开发环境搭建</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-28T14:49:01+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:49 pm</span></time>
+        
+        
+          | <a href="/blog/2016/04/28/oclint-develop-enviroment/#comments">Comments</a>
+         
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>环境安装</h3>
+
+<p><a href="http://docs.oclint.org/en/stable/devel/requirements.html">需要安装的软件</a></p>
+
+<h3>checkout代码</h3>
+
+<ul>
+<li>oclint/oclint</li>
+<li>oclint/oclint-json-compilation-database</li>
+<li>oclint/oclint-xcodebuild</li>
+<li>llvm/clang</li>
+<li>googletest/googlemock<br>
+<a href="http://docs.oclint.org/en/stable/devel/checkout.html">详细安装文档</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -489,23 +647,23 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/04/28/how-to-build-custom-rule/">本地开发oclint自定义规则</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/28/how-to-build-oclint/">本地编译oclint包</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/28/oclint-develop-enviroment/">Oclint本地开发环境搭建</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/22/ru-he-chu-li-oclintde-warningwu-bao/">如何处理oclint的warning误报</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/01/16/oclintqian-ru-dao-xcodejiao-cheng/">Oclint嵌入到xcode教程</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/14/oclint-jing-tai-sao-miao-gong-ju-jie-shao/">OCLint(静态扫描工具)介绍</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/31/li-yong-facebook-slash-infergong-ju-sao-miao-ocdai-ma/">利用facebook/infer工具扫描oc代码</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/30/huan-ying-ye/">Hello World</a>
       </li>
     
   </ul>
@@ -518,7 +676,8 @@ PATH=$OCLINT_HOME/bin:$PATH</p>
  <h1>Categories</h1>
  <ul id="categories">
   <li class='category'><a href='/blog/categories/codeanalyzer/'>codeanalyzer (4)</a></li>
-<li class='category'><a href='/blog/categories/test-tools/'>test-tools (4)</a></li>
+<li class='category'><a href='/blog/categories/oclint/'>oclint (2)</a></li>
+<li class='category'><a href='/blog/categories/test-tools/'>test-tools (6)</a></li>
 
  </ul>
 </section>
