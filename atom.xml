@@ -4,7 +4,7 @@
   <title><![CDATA[qiuhm's blog]]></title>
   <link href="http://qiuhm.github.io/atom.xml" rel="self"/>
   <link href="http://qiuhm.github.io/"/>
-  <updated>2016-04-28T18:56:14+08:00</updated>
+  <updated>2016-04-28T19:00:27+08:00</updated>
   <id>http://qiuhm.github.io/</id>
   <author>
     <name><![CDATA[qiuhm]]></name>
@@ -42,7 +42,7 @@
 <h3>编译包，copy自定义规则到oclint的安装目录</h3>
 
 <ul>
-<li><a href="http://gitlab.alibaba-inc.com/tingxuan.qhm/share/wikis/oclint-release-build">编译包的详细方法参照</a></li>
+<li><a href="http://qiuhm.github.io/blog/2016/04/28/how-to-build-oclint/">编译包的详细方法参照</a></li>
 </ul>
 
 ]]></content>
